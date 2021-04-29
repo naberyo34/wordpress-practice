@@ -29,27 +29,34 @@ function add_post_type()
 }
 add_action('init', 'add_post_type');
 
-// カスタムフィールド「サムネイル」の作成
-function insert_thumbnail_fields() {
+// 執筆者のカスタムフィールドを作成する
+function insert_author_fields()
+{
     global $post;
-    $thumbnail = get_post_meta($post->ID, 'thumbnail', true);
-    echo 'サムネイル画像: <input type="file" name="thumbnail" accept="image/*" />'
-    // $thumbnail に値が格納されている場合はプレビューを表示する
-    if(isset($thumbnail) && strlen($thumbnail) > 0){
-        echo '<img style="width: 200px;" src="'.wp_get_attachment_url($thumbnail).'">';
-    }
+    $author = get_post_meta($post->ID, 'author', true);
+    echo '<input type="text" name="author" value="' . $author . '" />';
 }
 
-// カスタムフィールド「サムネイル」の保存処理
-function save_thumbnail_fields($post_id) {
-
-}
-
-// 作成したカスタムフィールドをカスタム投稿タイプに紐付ける
+// 作成したカスタムフィールドを対象の投稿タイプに追加する
 function add_custom_fields()
 {
-    
+    add_meta_box(
+        'author_fields',
+        '執筆者',
+        'insert_author_fields',
+        'works',
+    );
 }
 
 add_action('admin_menu', 'add_custom_fields');
 
+// カスタムフィールドを保存する際に走る処理
+function save_custom_fields($post_id)
+{
+    // 執筆者の追加時に走る処理
+    if (isset($_POST['author'])) {
+        update_post_meta($post_id, 'author', $_POST['author']);
+    }
+}
+
+add_action('save_post', 'save_custom_fields');

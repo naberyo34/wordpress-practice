@@ -70,6 +70,70 @@ th {
   padding: 0;
 }
 
-h1 {
-  color: red;
+.header {
+  padding: 20px;
+}
+
+.header__title {
+  letter-spacing: 0.2em;
+}
+
+.mv {
+  padding: 120px 0;
+  background: #888;
+}
+
+.mv__title {
+  text-align: center;
+  font-size: 40px;
+  color: #fff;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.section__inner {
+  width: 800px;
+}
+
+.section__heading {
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.2em;
+}
+
+.section__linkWrapper {
+  margin-top: 20px;
+}
+
+.section__linkSlideInner {
+  display: flex;
+  align-items: center;
+}
+
+.section__linkImage {
+  width: 320px;
+  height: 240px;
+  background: #888;
+}
+
+.section__link {
+  display: block;
+  margin-left: 20px;
+}
+
+.section__news {
+  margin-top: 20px;
+}
+
+.section__date {
+  color: #888;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: #888;
 }

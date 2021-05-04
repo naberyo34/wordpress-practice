@@ -7,4 +7,7 @@
 <?php wp_head(); ?>
 </head>
 <body>
+<header class="header">
+    <p class="header__title">架空会社たま</p>
+</header>
 <main>

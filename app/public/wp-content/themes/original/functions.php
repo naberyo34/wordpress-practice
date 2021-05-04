@@ -2,7 +2,12 @@
 // スタイルシートの読み込み
 function add_files()
 {
+    wp_enqueue_style('slick', get_template_directory_uri() . '/vendors/slick/slick.css');
+    wp_enqueue_style('slick_theme', get_template_directory_uri() . '/vendors/slick/slick-theme.css');
     wp_enqueue_style('default', get_stylesheet_uri());
+    wp_enqueue_script('jq', get_template_directory_uri() . '/vendors/jquery-3.6.0.min.js');
+    wp_enqueue_script('slick', get_template_directory_uri() . '/vendors/slick/slick.js');
+    wp_enqueue_script('index', get_template_directory_uri() . '/js/index.js');
 }
 add_action('wp_enqueue_scripts', 'add_files');
 
